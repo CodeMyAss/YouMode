@@ -12,6 +12,7 @@ import java.util.Map;
 
 public class SCManager implements CommandExecutor{
 
+    private static final SCManager INSTANCE = new SCManager();
     private HashMap<String, SubCommand> subCommands = new HashMap<String, SubCommand>();
 
     public void addSubCommand(String identifier, SubCommand command) {
@@ -47,5 +48,9 @@ public class SCManager implements CommandExecutor{
             cs.sendMessage(Lang.generateError("Only players can run this command!"));
         }
         return false;
+    }
+
+    public static SCManager getInstance() {
+        return INSTANCE;
     }
 }
