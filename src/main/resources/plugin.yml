@@ -2,6 +2,7 @@ name: YouMode
 author: MazenMC
 description: Youtuber and Streamer Utilities
 main: io.mazenmc.youmode.YouModePlugin
+version: 3.2
 commands:
   record:
     description: A command which enables recording mode

@@ -20,36 +20,44 @@ public class Unmute implements SubCommand{
         }
 
         if(args.length >= 1) {
-            switch(UnmuteType.valueOf(args[0].toUpperCase())) {
-                case ALL:
-                    for(Player player : PlayerManager.getInstance().getRecorders()) {
-                        player.performCommand("record");
-                    }
+            try{
+                switch(UnmuteType.valueOf(args[0].toUpperCase())) {
+                    case ALL:
+                        for(Player player : PlayerManager.getInstance().getRecorders()) {
+                            player.performCommand("record");
+                        }
 
-                    p.sendMessage(ChatColor.GOLD + "All streamers have been unmuted!");
-                    break;
-                case USER:
-                    if(args.length >= 2) {
-                        Player target = Bukkit.getPlayer(args[1]);
+                        for(Player player : PlayerManager.getInstance().getStreamers()) {
+                            player.performCommand("stream");
+                        }
 
-                        if(target != null) {
-                            if(PlayerManager.getInstance().isRecording(target.getUniqueId())) {
-                                target.performCommand("record");
-                            }else if(StreamManager.getInstance().isStreaming(target.getUniqueId())) {
-                                target.performCommand("stream");
+                        p.sendMessage(ChatColor.GOLD + "All streamers have been unmuted!");
+                        break;
+                    case USER:
+                        if(args.length >= 2) {
+                            Player target = Bukkit.getPlayer(args[1]);
+
+                            if(target != null) {
+                                if(PlayerManager.getInstance().isRecording(target.getUniqueId())) {
+                                    target.performCommand("record");
+                                }else if(StreamManager.getInstance().isStreaming(target.getUniqueId())) {
+                                    target.performCommand("stream");
+                                }else{
+                                    p.sendMessage(Lang.generateError(args[1] + " is rather not recording or streaming!"));
+                                }
                             }else{
-                                p.sendMessage(Lang.generateError(args[1] + " is rather not recording or streaming!"));
+                                p.sendMessage(Lang.generateError(args[1] + " is currently offline and can't be unmuted"));
                             }
                         }else{
-                            p.sendMessage(Lang.generateError(args[1] + " is currently offline and can't be unmuted"));
+                            p.sendMessage(INVALID_SYNTAX);
                         }
-                    }else{
+                        break;
+                    default:
                         p.sendMessage(INVALID_SYNTAX);
-                    }
-                    break;
-                default:
-                    p.sendMessage(INVALID_SYNTAX);
-                    break;
+                        break;
+                }
+            }catch(Exception ex) {
+                p.sendMessage(INVALID_SYNTAX);
             }
         }else{
             p.sendMessage(INVALID_SYNTAX);

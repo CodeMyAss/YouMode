@@ -34,11 +34,11 @@ public class List implements SubCommand{
             }catch(IndexOutOfBoundsException ignored) {}
 
             if(recorder != null) {
-                p.sendMessage(Lang.build("&6", recorder.getName()));
+                p.sendMessage(Lang.toColour(Lang.build("&6", recorder.getName())));
             }
 
             if(streamer != null) {
-                p.sendMessage(Lang.build("&6", streamer.getName(), " - &b", StreamManager.getInstance().getLink(streamer.getUniqueId())));
+                p.sendMessage(Lang.toColour(Lang.build("&6", streamer.getName(), " - &b", StreamManager.getInstance().getLink(streamer.getUniqueId()))));
             }
         }
 

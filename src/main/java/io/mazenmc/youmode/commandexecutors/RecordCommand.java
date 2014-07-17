@@ -35,7 +35,7 @@ public class RecordCommand implements CommandExecutor{
             if(PlayerManager.getInstance().isRecording(id)) {
                 PlayerManager.getInstance().setPlayer(id, PlayerStatus.NONE);
 
-                Bukkit.broadcastMessage(Lang.RECORD_FINISH);
+                Bukkit.broadcastMessage(String.format(Lang.RECORD_FINISH, p.getName()));
             }else{
                 PlayerManager.getInstance().setPlayer(id, PlayerStatus.RECORDING);
 
