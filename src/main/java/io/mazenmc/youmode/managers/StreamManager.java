@@ -21,11 +21,13 @@ public class StreamManager {
         streamData.put(id, link);
         PlayerManager.getInstance().setPlayer(id, PlayerStatus.STREAMING);
 
-        Bukkit.broadcastMessage(String.format(Lang.STARTSTREAM, id, link));
+        Bukkit.broadcastMessage(String.format(Lang.STREAM_START, id, link));
     }
 
     public void removeStreamer(UUID id) {
         streamData.remove(id);
+
+        Bukkit.broadcastMessage(String.format(Lang.STREAM_FINISH, id));
     }
 
     public boolean isStreaming(UUID id) {

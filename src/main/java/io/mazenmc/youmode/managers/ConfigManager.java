@@ -25,6 +25,10 @@ public class ConfigManager {
         return (String) get(path);
     }
 
+    public void reloadConfig() {
+        YouModePlugin.getInstance().reloadConfig();
+    }
+
     public static ConfigManager getInstance() {
         return INSTANCE;
     }

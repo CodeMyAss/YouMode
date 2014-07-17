@@ -1,0 +1,15 @@
+name: YouMode
+author: MazenMC
+description: Youtuber and Streamer Utilities
+main: io.mazenmc.youmode.YouModePlugin
+commands:
+  record:
+    description: A command which enables recording mode
+    permission: youtube.record
+  stream:
+    description: Command which enables streaming mode
+    permission: youtube.stream
+  ym:
+    description: YouMode command
+  youtubers:
+    description: Displays all youtubers

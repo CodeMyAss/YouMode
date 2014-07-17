@@ -35,7 +35,7 @@ public class StreamCommand implements CommandExecutor{
             }
 
         }else{
-            cs.sendMessage(Lang.ONLYPLAYER);
+            cs.sendMessage(Lang.ONLY_PLAYER);
         }
 
         return false;
